@@ -67,3 +67,20 @@ services:
       - /dev/disk/:/dev/disk:ro
     devices:
       - /dev/kmsg
+
+  oracle-db-om:
+    image: container-registry.oracle.com/database/observability-exporter:1.5.5
+    container_name: oracle-db-om
+    restart: unless-stopped
+    ports:
+      - "9161:9161"
+    environment:
+      - DB_USERNAME=yourUser
+      # - DB_ROLE=SYSDBA
+      - DB_PASSWORD=yourPassword
+      - DB_CONNECT_STRING=yourDb:1521/dbService
+      - CUSTOM_METRICS=/exporter/custom-metrics.toml
+    volumes:
+      - ./oracle-exporter:/exporter
+    stdin_open: true
+    tty: true

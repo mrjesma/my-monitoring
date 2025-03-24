@@ -1,0 +1,25 @@
+[[metric]]
+context = "fra"
+metricsdesc = {space_limit="Maximum space allocated for the Oracle Recovey File", space_used="Actual space currently used in the Oracle Recovery File Destination", space_reclaimable="Amount of space in the Recovery Area that is reclaimable"}
+request = "select space_limit, space_used, space_reclaimable from v$recovery_file_dest"
+
+# [[metric]]
+# context = "system"
+# metricsdesc = {host_cpu_utilization="Host cpu utilization percent"}
+# request = "select value as host_cpu_utilization from v$sysmetric where metric_id=2057 and group_id=2"
+#
+# [[metric]]
+# context = "system"
+# metricsdesc = {average_active_sessions="Average active sessions"}
+# request = "select value as average_active_sessions from v$sysmetric where metric_id=2147 and group_id=2"
+
+[[metric]]
+context = "system_performance"
+labels = ["metric_name"]
+metricsdesc = {value="Oracle system performance metric"}
+request = "select metric_name, value from v$sysmetric where metric_id in (2057,2147) and group_id=2"
+
+[[metric]]
+context = "sessions"
+metricsdesc = {active_sessions_waiting="Number of active session not in idle"}
+request = "select count(*) as active_sessions_waiting from v$session where status = 'ACTIVE' and wait_class != 'Idle'"
