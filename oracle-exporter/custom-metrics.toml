@@ -17,7 +17,7 @@ request = "select space_limit, space_used, space_reclaimable from v$recovery_fil
 context = "system_performance"
 labels = ["metric_name"]
 metricsdesc = {value="Oracle system performance metric"}
-request = "select metric_name, value from v$sysmetric where metric_id in (2057,2147) and group_id=2"
+request = "select metric_name, value from v$sysmetric where metric_id in (2057,2108,2147) and group_id=2"
 
 [[metric]]
 context = "sessions"

@@ -772,7 +772,7 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 12,
+        "w": 7,
         "x": 0,
         "y": 8
       },
@@ -794,17 +794,117 @@
       "targets": [
         {
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "expr": "oracledb_system_performance_value{metric_name=\"Host CPU Utilization (%)\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
-          "legendFormat": "Host CPU Utilization",
+          "legendFormat": "__auto",
           "range": true,
           "refId": "A",
           "useBackend": false
         }
       ],
       "title": "Host CPU utilization",
+      "type": "timeseries"
+    },
+    {
+      "datasource": {
+        "type": "prometheus",
+        "uid": "PBFA97CFB590B2093"
+      },
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "palette-classic"
+          },
+          "custom": {
+            "axisBorderShow": false,
+            "axisCenteredZero": false,
+            "axisColorMode": "text",
+            "axisLabel": "",
+            "axisPlacement": "auto",
+            "barAlignment": 0,
+            "barWidthFactor": 0.6,
+            "drawStyle": "line",
+            "fillOpacity": 0,
+            "gradientMode": "none",
+            "hideFrom": {
+              "legend": false,
+              "tooltip": false,
+              "viz": false
+            },
+            "insertNulls": false,
+            "lineInterpolation": "linear",
+            "lineWidth": 1,
+            "pointSize": 5,
+            "scaleDistribution": {
+              "type": "linear"
+            },
+            "showPoints": "auto",
+            "spanNulls": false,
+            "stacking": {
+              "group": "A",
+              "mode": "none"
+            },
+            "thresholdsStyle": {
+              "mode": "off"
+            }
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          },
+          "unit": "percent"
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 6,
+        "w": 8,
+        "x": 7,
+        "y": 8
+      },
+      "id": 39,
+      "options": {
+        "legend": {
+          "calcs": [],
+          "displayMode": "list",
+          "placement": "bottom",
+          "showLegend": false
+        },
+        "tooltip": {
+          "hideZeros": false,
+          "mode": "single",
+          "sort": "none"
+        }
+      },
+      "pluginVersion": "11.5.2",
+      "targets": [
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "PBFA97CFB590B2093"
+          },
+          "editorMode": "code",
+          "expr": "oracledb_system_performance_value{metric_name=\"Host CPU Utilization (%)\"} * on(instance) oracledb_system_performance_value{metric_name=\"Database CPU Time Ratio\"} / 100",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "__auto",
+          "range": true,
+          "refId": "A"
+        }
+      ],
+      "title": "Database CPU utilization",
       "type": "timeseries"
     },
     {
@@ -848,8 +948,8 @@
       },
       "gridPos": {
         "h": 6,
-        "w": 6,
-        "x": 12,
+        "w": 3,
+        "x": 15,
         "y": 8
       },
       "id": 28,
@@ -1919,14 +2019,14 @@
         "auto_count": 200,
         "auto_min": "10s",
         "current": {
-          "text": "1m",
-          "value": "1m"
+          "text": "$__auto",
+          "value": "$__auto"
         },
         "label": "Interval",
         "name": "interval",
         "options": [
           {
-            "selected": true,
+            "selected": false,
             "text": "1m",
             "value": "1m"
           },
@@ -1990,6 +2090,6 @@
   "timezone": "",
   "title": "Oracle Dashboard (Custom)",
   "uid": "oracle_dashboard",
-  "version": 20,
+  "version": 22,
   "weekStart": ""
 }
