@@ -23,3 +23,9 @@ request = "select metric_name, value from v$sysmetric where metric_id in (2057,2
 context = "sessions"
 metricsdesc = {active_sessions_waiting="Number of active session not in idle"}
 request = "select count(*) as active_sessions_waiting from v$session where status = 'ACTIVE' and wait_class != 'Idle'"
+
+[[metric]]
+context = "deadlocks"
+metricstype = {total="counter"}
+metricsdesc = {total="Total number of deadlocks"}
+request = "select COUNT(*) as total from x$dbgalertext where message_text like 'ORA-00060%'"
