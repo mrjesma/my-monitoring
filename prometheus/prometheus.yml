@@ -27,7 +27,10 @@ scrape_configs:
     static_configs:
       - targets: ["node-exporter:9100","cadvisor:8080"]
 
-  - job_name: "adp01sp2"
+  - job_name: "oracle_db_pds_om"
     static_configs:
-      - targets: ["oracle-db-om:9161"]
-
+      - targets: ["oracle-db-pds-om:9161"]
+        labels:
+          environment: 'pds'
+          application: 'oracle'
+          database: 'om'

@@ -153,11 +153,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_up",
+          "expr": "oracledb_up{environment=\"$environment\", database=\"$database\"}",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -225,11 +225,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_db_system_value{name=\"sga_max_size\"}",
+          "expr": "oracledb_db_system_value{environment=\"$environment\", database=\"$database\", name=\"sga_max_size\"}",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -298,11 +298,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_db_system_value{name=\"pga_aggregate_limit\"}",
+          "expr": "oracledb_db_system_value{environment=\"$environment\", database=\"$database\", name=\"pga_aggregate_limit\"}",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -370,10 +370,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
-          "expr": "oracledb_sessions_value{status=\"ACTIVE\"}",
+          "editorMode": "code",
+          "expr": "oracledb_sessions_value{environment=\"$environment\", database=\"$database\", status=\"ACTIVE\"}",
           "legendFormat": "{{type}}",
           "range": true,
           "refId": "A"
@@ -439,10 +439,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
-          "expr": "oracledb_activity_user_commits",
+          "editorMode": "code",
+          "expr": "oracledb_activity_user_commits{environment=\"$environment\", database=\"$database\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -508,10 +508,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
-          "expr": "oracledb_activity_execute_count",
+          "editorMode": "code",
+          "expr": "oracledb_activity_execute_count{environment=\"$environment\", database=\"$database\"}",
           "legendFormat": "__auto",
           "range": true,
           "refId": "A"
@@ -577,11 +577,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_db_system_value{name=\"cpu_count\"}",
+          "expr": "oracledb_db_system_value{environment=\"$environment\", database=\"$database\", name=\"cpu_count\"}",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -674,12 +674,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_dbtype",
+          "expr": "oracledb_dbtype{environment=\"$environment\", database=\"$database\"}",
           "format": "table",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -751,11 +751,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "max(oracledb_db_platform_value) by (platform_name)",
+          "expr": "max(oracledb_db_platform_value{environment=\"$environment\", database=\"$database\"}) by (platform_name)",
           "format": "table",
           "instant": true,
           "legendFormat": "{{platform_name}}",
@@ -878,10 +878,10 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
-          "expr": "oracledb_system_performance_value{metric_name=\"Host CPU Utilization (%)\"} * ignoring(metric_name) oracledb_system_performance_value{metric_name=\"Database CPU Time Ratio\"} / 100",
+          "expr": "oracledb_system_performance_value{environment=\"$environment\", database=\"$database\", metric_name=\"Host CPU Utilization (%)\"} * ignoring(metric_name) oracledb_system_performance_value{environment=\"$environment\", database=\"$database\", metric_name=\"Database CPU Time Ratio\"} / 100",
           "hide": false,
           "instant": false,
           "legendFormat": "%db",
@@ -960,11 +960,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "oracledb_process_count",
+          "editorMode": "code",
+          "expr": "oracledb_process_count{environment=\"$environment\", database=\"$database\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -1033,11 +1033,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "oracledb_system_performance_value{metric_name=\"Average Active Sessions\"}",
+          "editorMode": "code",
+          "expr": "oracledb_system_performance_value{environment=\"$environment\", database=\"$database\", metric_name=\"Average Active Sessions\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -1106,11 +1106,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "avg_over_time(oracledb_sessions_active_sessions_waiting[$__interval])",
+          "expr": "avg_over_time(oracledb_sessions_active_sessions_waiting{environment=\"$environment\", database=\"$database\"}[$__interval])",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "__auto",
@@ -1222,12 +1222,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_administrative[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_administrative{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "format": "time_series",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
@@ -1243,9 +1243,9 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_application[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_application{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1258,12 +1258,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_cluster[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_cluster{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1279,9 +1279,9 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_commit[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_commit{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1294,12 +1294,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_concurrency[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_concurrency{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1315,9 +1315,9 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_configuration[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_configuration{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1330,12 +1330,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_network[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_network{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1351,9 +1351,9 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_other[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_other{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1366,12 +1366,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_scheduler[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_scheduler{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1387,9 +1387,9 @@
             "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_user_io[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_user_io{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": false,
@@ -1402,12 +1402,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "rate(oracledb_wait_time_system_io[$__rate_interval])",
+          "expr": "rate(oracledb_wait_time_system_io{environment=\"$environment\", database=\"$database\"}[$__rate_interval])",
           "format": "time_series",
           "fullMetaSearch": false,
           "hide": false,
@@ -1502,11 +1502,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "oracledb_cache_hit_ratio_value",
+          "editorMode": "code",
+          "expr": "oracledb_cache_hit_ratio_value{environment=\"$environment\", database=\"$database\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "instant": false,
@@ -1626,11 +1626,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "editorMode": "code",
           "exemplar": false,
-          "expr": "max(oracledb_top_sql_elapsed) by (sql_id, sql_text)",
+          "expr": "max(oracledb_top_sql_elapsed{environment=\"$environment\", database=\"$database\"}) by (sql_id, sql_text)",
           "format": "table",
           "instant": true,
           "legendFormat": "__auto",
@@ -1730,12 +1730,36 @@
                 }
               }
             ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Tablespace"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              }
+            ]
+          },
+          {
+            "matcher": {
+              "id": "byName",
+              "options": "Type"
+            },
+            "properties": [
+              {
+                "id": "custom.width",
+                "value": 250
+              }
+            ]
           }
         ]
       },
       "gridPos": {
         "h": 8,
-        "w": 11,
+        "w": 12,
         "x": 0,
         "y": 47
       },
@@ -1764,12 +1788,12 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
+          "editorMode": "code",
           "exemplar": false,
-          "expr": "oracledb_tablespace_used_percent",
+          "expr": "oracledb_tablespace_used_percent{environment=\"$environment\", database=\"$database\"}",
           "format": "table",
           "fullMetaSearch": false,
           "hide": false,
@@ -1790,6 +1814,8 @@
               "Time": true,
               "__name__": true,
               "application": true,
+              "database": true,
+              "environment": true,
               "instance": true,
               "job": true
             },
@@ -1881,8 +1907,8 @@
       },
       "gridPos": {
         "h": 8,
-        "w": 13,
-        "x": 11,
+        "w": 12,
+        "x": 12,
         "y": 47
       },
       "id": 31,
@@ -1910,11 +1936,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "oracledb_tablespace_used_percent",
+          "editorMode": "code",
+          "expr": "oracledb_tablespace_used_percent{environment=\"$environment\", database=\"$database\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
           "legendFormat": "{{tablespace}}",
@@ -2025,11 +2051,11 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
           "editorMode": "code",
-          "expr": "(oracledb_fra_space_used - oracledb_fra_space_reclaimable) / oracledb_fra_space_limit * 100",
+          "expr": "(oracledb_fra_space_used{environment=\"$environment\", database=\"$database\"} - oracledb_fra_space_reclaimable{environment=\"$environment\", database=\"$database\"}) / oracledb_fra_space_limit{environment=\"$environment\", database=\"$database\"} * 100",
           "fullMetaSearch": false,
           "hide": false,
           "includeNullMetadata": true,
@@ -2074,7 +2100,8 @@
             "lineWidth": 1,
             "pointSize": 5,
             "scaleDistribution": {
-              "type": "linear"
+              "log": 2,
+              "type": "symlog"
             },
             "showPoints": "auto",
             "spanNulls": false,
@@ -2086,6 +2113,7 @@
               "mode": "off"
             }
           },
+          "decimals": 0,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -2128,17 +2156,30 @@
         {
           "datasource": {
             "type": "prometheus",
-            "uid": "${DS_PROMETHEUS}"
+            "uid": "${datasource}"
           },
           "disableTextWrap": false,
-          "editorMode": "builder",
-          "expr": "oracledb_deadlocks_total",
+          "editorMode": "code",
+          "expr": "oracledb_deadlocks_total{environment=\"$environment\", database=\"$database\"}",
           "fullMetaSearch": false,
           "includeNullMetadata": true,
-          "legendFormat": "deadlocks",
+          "legendFormat": "Total",
           "range": true,
           "refId": "A",
           "useBackend": false
+        },
+        {
+          "datasource": {
+            "type": "prometheus",
+            "uid": "${datasource}"
+          },
+          "editorMode": "code",
+          "expr": "increase(oracledb_deadlocks_total{environment=~\"$environment\", database=~\"$database\"}[$__range])",
+          "hide": false,
+          "instant": false,
+          "legendFormat": "Increase over time range",
+          "range": true,
+          "refId": "B"
         }
       ],
       "title": "Deadlocks",
@@ -2229,6 +2270,48 @@
         "query": "1m,10m,30m,1h,6h,12h,1d,7d,14d,30d",
         "refresh": 2,
         "type": "interval"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values({application=\"oracle\"},environment)",
+        "hide": 1,
+        "label": "Environment",
+        "name": "environment",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values({application=\"oracle\"},environment)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
+      },
+      {
+        "allowCustomValue": false,
+        "current": {},
+        "datasource": {
+          "type": "prometheus",
+          "uid": "${datasource}"
+        },
+        "definition": "label_values({application=\"oracle\", environment=\"$environment\"},database)",
+        "hide": 1,
+        "label": "Database",
+        "name": "database",
+        "options": [],
+        "query": {
+          "qryType": 1,
+          "query": "label_values({application=\"oracle\", environment=\"$environment\"},database)",
+          "refId": "PrometheusVariableQueryEditor-VariableQuery"
+        },
+        "refresh": 1,
+        "regex": "",
+        "type": "query"
       }
     ]
   },
@@ -2240,6 +2323,6 @@
   "timezone": "",
   "title": "Oracle Dashboard",
   "uid": "oracle_dashboard_custom",
-  "version": 1,
+  "version": 2,
   "weekStart": ""
 }
